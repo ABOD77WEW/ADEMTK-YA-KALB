@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>قصيدة عدمتك يا قلب</title>
-  <base href="/" />
+  <base href="./" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -166,6 +166,92 @@
         background-image:
             linear-gradient(rgba(26, 26, 26, 0.97), rgba(26, 26, 26, 0.97)),
             url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a969' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    /* New Title Style - Fiery Gold */
+    .title-fiery-gold {
+      background: linear-gradient(145deg, #fce5ad, #e6b325, #c9a969);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+      text-shadow: 0px 0px 10px rgba(252, 229, 173, 0.3), 2px 2px 4px rgba(0,0,0,0.5);
+      animation: title-glow 4s ease-in-out infinite alternate;
+    }
+
+    .title-fiery-gold .diacritic-gold {
+      -webkit-text-fill-color: #FFFFFF; /* Pure white for high contrast */
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+
+    @keyframes title-glow {
+      from {
+        text-shadow: 0px 0px 10px rgba(252, 229, 173, 0.3), 2px 2px 4px rgba(0,0,0,0.5);
+      }
+      to {
+        text-shadow: 0px 0px 25px rgba(252, 229, 173, 0.6), 2px 4px 8px rgba(0,0,0,0.6);
+      }
+    }
+
+    /* New Ornate Card Style for main sections */
+    .card-ornate {
+      position: relative;
+      background: linear-gradient(to bottom right, #333, #222);
+      border: 1px solid #c9a969/40;
+      border-radius: 0.5rem; /* rounded-lg */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4), inset 0 0 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      overflow: hidden; /* For inner glow */
+    }
+    .card-ornate::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(252, 229, 173, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(201, 169, 105, 0.08) 0%, transparent 30%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .card-ornate:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.2);
+      border-color: #fce5ad;
+    }
+    .card-ornate:hover::before {
+      opacity: 1;
+    }
+
+    /* New style for smaller glossary cards */
+    .glossary-card {
+      background: #2c2c2c/70;
+      border: 1px solid #c9a969/30;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden; /* for the sheen effect */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .glossary-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(252, 229, 173, 0.1) 50%, rgba(255,255,255,0) 60%, rgba(255,255,255,0) 100%);
+        background-size: 200% 200%;
+        background-position: 200% 200%;
+        transition: background-position 0.5s ease-out;
+        pointer-events: none;
+    }
+    .glossary-card:hover {
+        transform: translateY(-3px) scale(1.03);
+        border-color: #fce5ad;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .glossary-card:hover::after {
+        background-position: -20% -20%;
     }
 
   </style>

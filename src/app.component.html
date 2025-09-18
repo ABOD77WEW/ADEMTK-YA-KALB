@@ -10,8 +10,8 @@
 
     <!-- Header Section -->
     <header class="text-center py-12 border-b-2 border-[#c9a969]/30 fade-in-up">
-      <h1 class="font-amiri text-5xl sm:text-7xl font-bold text-[#fce5ad]" style="text-shadow: 1px 1px 2px #1a1a1a, 2px 2px 5px rgba(0,0,0,0.7);">
-        عدمتك يا قلب
+      <h1 class="font-amiri text-5xl sm:text-7xl font-bold title-fiery-gold">
+        ع<span class="diacritic-gold">َ</span>د<span class="diacritic-gold">ِ</span>م<span class="diacritic-gold">ْ</span>ت<span class="diacritic-gold">ُ</span>ك<span class="diacritic-gold">َ</span> ي<span class="diacritic-gold">َ</span>ا ق<span class="diacritic-gold">َ</span>ل<span class="diacritic-gold">ْ</span>ب<span class="diacritic-gold">ُ</span>
       </h1>
       <p class="mt-4 text-2xl text-[#f0e6d2]/80">{{ poet.name }}</p>
     </header>
@@ -51,7 +51,7 @@
       @if (activeTab() === 'introduction') {
         <section class="fade-in-up">
           <div (click)="openCardModal(introductionCardData)"
-               class="bg-[#2c2c2c]/50 p-6 rounded-lg border border-[#c9a969]/50 shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+               class="card-ornate p-6 cursor-pointer">
             <h2 class="font-amiri text-3xl font-bold text-[#fce5ad] mb-4">{{ introduction.title }}</h2>
             <p class="text-lg leading-relaxed text-[#f0e6d2]/90">
               {{ introduction.content }}
@@ -70,7 +70,7 @@
       @if (activeTab() === 'poet') {
         <section class="fade-in-up">
           <div (click)="openCardModal(poetCardData)"
-               class="bg-[#2c2c2c]/50 p-6 sm:p-8 rounded-lg border border-[#c9a969]/50 shadow-lg flex flex-col md:flex-row items-center gap-8 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+               class="card-ornate p-6 sm:p-8 flex flex-col md:flex-row items-center gap-8 cursor-pointer">
             <div class="flex-shrink-0 flex items-center justify-center w-48 h-48 rounded-full bg-gradient-to-br from-[#2c2c2c] to-[#1a1a1a] border-4 border-[#c9a969] shadow-inner">
               <h2 class="font-amiri text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-b from-[#c9a969] via-[#f0e6d2] to-[#c9a969]" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">
                 ب<span class="text-black">َ</span>ش<span class="text-black">َّ</span>ار<span class="text-black">ُ</span><br>بن<span class="text-black">ُ</span><br>ب<span class="text-black">ُ</span>ر<span class="text-black">ْ</span>د<span class="text-black">ٍ</span>
@@ -81,7 +81,7 @@
               <p class="text-lg leading-relaxed text-[#f0e6d2]/90">
                {{ poet.bio }}
               </p>
-               <p class="text-left text-sm mt-4 text-[#c9a969]">ديوان بشار بن برد، "دار صادر" بيروت ط.١ ٢٠٠٠</p>
+               <p class="text-left text-sm mt-4 text-[#c9a969]">ديوان بشار بن برد, "دار صادر" بيروت ط.١ ٢٠٠٠</p>
             </div>
           </div>
         </section>
@@ -199,7 +199,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @for (term of glossary; track term.term) {
               <div (click)="openCardModal({ title: term.term, content: term.definition })"
-                   class="bg-[#2c2c2c]/50 p-5 rounded-lg border border-[#c9a969]/40 transform hover:scale-105 hover:border-[#fce5ad] transition-all duration-300 cursor-pointer">
+                   class="glossary-card p-5 rounded-lg cursor-pointer">
                 <h3 class="text-[#fce5ad] font-bold text-xl font-amiri">{{ term.term }}</h3>
                 <p class="text-[#f0e6d2]/90 mt-1">{{ term.definition }}</p>
               </div>
@@ -211,20 +211,14 @@
     </main>
 
     <!-- Quiz Floating Action Button -->
-    <div class="fixed bottom-8 left-8 z-50 group">
-      <div class="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-40 transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 pointer-events-none">
-        <svg viewBox="0 0 100 30" class="w-full h-auto drop-shadow-lg">
-          <defs>
-            <linearGradient id="bannerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:#fce5ad;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#c9a969;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <path d="M0 20 Q 50 -5 100 20 L 95 28 Q 50 10 5 28 Z" fill="url(#bannerGradient)"></path>
-          <text x="50" y="19" font-family="Amiri, serif" font-size="12" fill="#1a1a1a" text-anchor="middle" class="font-bold">الأسئلة</text>
-        </svg>
+    <div class="fixed bottom-8 left-8 z-50">
+      <div class="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-auto">
+        <div class="bg-red-700 border-2 border-red-900 text-white font-bold py-2 px-6 rounded-lg shadow-lg select-none"
+             style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5); box-shadow: 0 4px 6px rgba(0,0,0,0.4), inset 0 2px 2px rgba(255,255,255,0.2), inset 0 -2px 2px rgba(0,0,0,0.3);">
+          الأسئلة
+        </div>
       </div>
-      <button (click)="openQuiz()" class="relative w-20 h-20 bg-gradient-to-br from-[#fce5ad] to-[#c9a969] rounded-full shadow-lg text-[#1a1a1a] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+      <button (click)="openQuiz()" class="relative w-20 h-20 bg-gradient-to-br from-[#fce5ad] to-[#c9a969] rounded-full shadow-lg text-[#1a1a1a] flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
         <span class="absolute inline-flex h-full w-full rounded-full bg-[#fce5ad] animate-spaced-ping"></span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
