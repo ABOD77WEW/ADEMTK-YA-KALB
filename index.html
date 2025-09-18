@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>قصيدة عدمتك يا قلب</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #1a1a1a;
+      color: #f0e6d2;
+    }
+    .font-amiri {
+      font-family: 'Amiri', serif;
+    }
+    .fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+        opacity: 0;
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .modal-backdrop {
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+       background-color: #2c2c2c;
+       border: 1px solid #c9a969;
+    }
+    .verse-line {
+      transition: all 0.3s ease;
+    }
+    .verse-line:hover {
+      color: #fce5ad;
+      transform: scale(1.02);
+    }
+    .glossary-tooltip {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    .has-glossary:hover .glossary-tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+    @keyframes spaced-ping {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+      10% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+    .animate-spaced-ping {
+      animation: spaced-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes glow-pulse {
+      0%, 50%, 100% {
+        box-shadow: 0 0 5px rgba(252, 229, 173, 0);
+        border-color: rgba(201, 169, 105, 0.5);
+      }
+      25%, 75% {
+        box-shadow: 0 0 15px rgba(252, 229, 173, 0.6);
+        border-color: rgba(252, 229, 173, 1);
+      }
+    }
+    .animate-glow-pulse {
+      animation: glow-pulse 5s infinite;
+    }
+
+    /* Intro and Quiz Animations */
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    @keyframes fadeInScaleUp {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .animate-fadeInScaleUp {
+      opacity: 0;
+      animation: fadeInScaleUp 1.5s ease-out forwards;
+    }
+    @keyframes shake-horizontal {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+      20%, 40%, 60%, 80% { transform: translateX(8px); }
+    }
+    .animate-shake-horizontal {
+      animation: shake-horizontal 0.6s cubic-bezier(.36,.07,.19,.97) both;
+    }
+    @keyframes tada {
+      from { transform: scale3d(1, 1, 1); }
+      10%, 20% { transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); }
+      30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+      40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+      to { transform: scale3d(1, 1, 1); }
+    }
+    .animate-tada {
+      animation: tada 1s ease;
+    }
+    
+    /* New Powerful Quiz Finish Animations */
+    @keyframes result-pop-in {
+      0% { transform: scale(0.5) rotate(-15deg); opacity: 0; }
+      60% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .animate-result-pop-in {
+      animation: result-pop-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    @keyframes confetti-fall {
+      from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+    .confetti {
+      position: absolute; width: 10px; height: 20px; top: -20px;
+      animation-name: confetti-fall;
+      animation-duration: 4s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+    .confetti:nth-child(1) { left: 10%; animation-delay: 0.1s; background-color: #fce5ad; }
+    .confetti:nth-child(2) { left: 20%; animation-delay: 0.8s; background-color: #c9a969; transform: rotate(20deg); }
+    .confetti:nth-child(3) { left: 30%; animation-delay: 0.3s; background-color: #E6B325; }
+    .confetti:nth-child(4) { left: 40%; animation-delay: 1.2s; background-color: #f0e6d2; transform: rotate(-20deg); }
+    .confetti:nth-child(5) { left: 50%; animation-delay: 0.5s; background-color: #fce5ad; }
+    .confetti:nth-child(6) { left: 60%; animation-delay: 1.5s; background-color: #c9a969; transform: rotate(10deg); }
+    .confetti:nth-child(7) { left: 70%; animation-delay: 0.2s; background-color: #E6B325; }
+    .confetti:nth-child(8) { left: 80%; animation-delay: 1.1s; background-color: #f0e6d2; transform: rotate(-10deg); }
+    .confetti:nth-child(9) { left: 90%; animation-delay: 0.6s; background-color: #fce5ad; }
+    .confetti:nth-child(10) { left: 15%; animation-delay: 1.4s; background-color: #c9a969; transform: rotate(30deg); }
+    .confetti:nth-child(11) { left: 25%; animation-delay: 0.9s; background-color: #E6B325; }
+    .confetti:nth-child(12) { left: 35%; animation-delay: 0.4s; background-color: #f0e6d2; transform: rotate(-30deg); }
+    .confetti:nth-child(13) { left: 45%; animation-delay: 1.3s; background-color: #fce5ad; }
+    .confetti:nth-child(14) { left: 55%; animation-delay: 0.7s; background-color: #c9a969; transform: rotate(5deg); }
+    .confetti:nth-child(15) { left: 65%; animation-delay: 1s; background-color: #E6B325; }
+
+    .quiz-bg {
+        background-image:
+            linear-gradient(rgba(26, 26, 26, 0.97), rgba(26, 26, 26, 0.97)),
+            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a969' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "rxjs": "https://aistudiocdn.com/rxjs@^7.8.2?conditions=es2015",
+    "rxjs/operators": "https://aistudiocdn.com/rxjs@^7.8.2/operators?conditions=es2015",
+    "rxjs/ajax": "https://aistudiocdn.com/rxjs@^7.8.2/ajax?conditions=es2015",
+    "rxjs/webSocket": "https://aistudiocdn.com/rxjs@^7.8.2/webSocket?conditions=es2015",
+    "rxjs/testing": "https://aistudiocdn.com/rxjs@^7.8.2/testing?conditions=es2015",
+    "rxjs/fetch": "https://aistudiocdn.com/rxjs@^7.8.2/fetch?conditions=es2015",
+    "@angular/compiler": "https://next.esm.sh/@angular/compiler@^20.1.6-0?external=rxjs",
+    "@angular/platform-browser": "https://next.esm.sh/@angular/platform-browser@^20.1.6-0?external=rxjs",
+    "@angular/common/http": "https://next.esm.sh/@angular/common@^20.1.6-0/http?external=rxjs",
+    "@angular/core": "https://next.esm.sh/@angular/core@^20.1.6-0?external=rxjs",
+    "@angular/common": "https://next.esm.sh/@angular/common@^20.1.6-0?external=rxjs"
+  }
+}
+</script>
+</head>
+<body class="antialiased">
+  <app-root></app-root>
+</body>
+</html>
